@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Text Rotator Vanilla and Card - CSS3</title>
+    <style>
+    *,*::before, *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: content-box;
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: #151515;
+        font-family:Arial, Helvetica, sans-serif;
+        
+    }
+    h2 {
+        position: relative;
+        color: #666;
+        font-size: 70px;
+        text-transform: uppercase;
+    }
+    h2 span {
+        color: #0f0;
+        display: none;
+    }
+    .container {
+        width: 1200px;
+        display: flex;
+        justify-content: space-around;
+        margin-top: 50px;
+    }
+    .card {
+        position: relative;
+        width: 350px;
+        background: white;
+        padding: 30px;
+        margin:10px;
+        overflow: hidden;
+    }
+    .card::before {
+        content: '';
+        position: absolute;
+        bottom: calc(-100% + 5px);
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        transition: .5s ease-in-out;
+    }
+    .card:hover::before {
+        bottom: 0;
+    }
+    .card:nth-child(1):before {
+        background: blueviolet;
+    }
+    .card:nth-child(2):before {
+        background: rebeccapurple;
+    }
+    .card:nth-child(3):before {
+        background:slateblue
+    }
+    .card div {
+        position: relative;
+        z-index: 2;
+    }
+    .card h3 {
+        font-size: 30px;
+        margin-bottom: 10px;
+        color: #666;
+        transition: .5s;
+    }
+    .card p {
+        font-size: 18px;
+        color: #666;
+        transition: .5s;
+    }
+    .card a {
+        display: inline-block;
+        padding: 10px 15px;
+        box-shadow: 2px 4px 6px rgba(0,0,0,0.5);
+        margin-top: 20px;
+        text-decoration: none;
+        font-size: 15px;
+        color: #666;
+        font-weight: 600;
+        background: white;
+    }
+    .card:hover h3,
+    .card:hover p {
+        color: #fff;
+    }
+
+
+    </style>
+</head>
+<body>
+    <h2 id="text">Card 
+        <span style="display: initial;">Elegante</span>
+        <span>Moderno</span>
+        <span>Bonito</span>
+        <span>Eficiente</span>
+    </h2>
+
+    <div class="container">
+        <!-- card 1 -->
+        <div class="card">
+            <div>
+                <h3>HTML</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum quisquam, placeat magnam maiores aperiam minima ipsa distinctio molestias exercitationem nemo!</p>
+                <a href="">Saiba mais</a>
+            </div>
+        </div>
+
+        <!-- card 2 -->
+        <div class="card">
+            <div>
+                <h3>CSS</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum quisquam, placeat magnam maiores aperiam minima ipsa distinctio molestias exercitationem nemo!</p>
+                <a href="">Saiba mais</a>
+            </div>
+        </div>
+
+        <!-- card 3 -->
+        <div class="card">
+            <div>
+                <h3>JQUERY</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum quisquam, placeat magnam maiores aperiam minima ipsa distinctio molestias exercitationem nemo!</p>
+                <a href="">Saiba mais</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script type="text/javascript">
+    var text = document.getElementById('text');
+    var word = text.getElementsByTagName('span');
+    
+    var i = 0;
+
+    function rotator(){
+        word[i].style.display = 'none';
+        i = (i+1) % word.length;
+        word[i].style.display = 'initial';
+    }
+    setInterval(rotator,1500);
+
+    </script>
+</body>
+</html>
